@@ -7,3 +7,14 @@ before_install:
 
 script:
   - docker run abubakarwase/devops-practice npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "devops-practice"
+  env: "Docker-env"
+  bucket_name: ""devops-practice"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
